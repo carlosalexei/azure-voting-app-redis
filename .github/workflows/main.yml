@@ -22,7 +22,8 @@ jobs:
           image:  azure-vote-front
           folder: azure-vote
           branch: master
-          tag: ${{ github.sha }}
+          tag: latest
+          # tag: ${{ github.sha }}
           
       - name: Azure login
         id: login
@@ -48,5 +49,6 @@ jobs:
           namespace: 'default'
           manifests: |
              azure-vote-all-in-one-redis.yaml
-          images: '${{ secrets.registry }}.azurecr.io/${{ secrets.repository }}/azure-vote-front:${{ github.sha }}'
+          images: '${{ secrets.registry }}.azurecr.io/${{ secrets.repository }}/azure-vote-front:latest'
+          # images: '${{ secrets.registry }}.azurecr.io/${{ secrets.repository }}/azure-vote-front:${{ github.sha }}'
         
